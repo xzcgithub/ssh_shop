@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    	<class name="com.itch.shop.categorysecond.bean.CategorySecond" table="categorysecond">
+    		<id name="csid" column="csid">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="csname" column="csname"></property>
+    		<!-- 二级分类和一级分类的关联 -->
+    		<many-to-one name="category" lazy="false" class="com.itch.shop.category.bean.Category" column="cid"></many-to-one>
+    		
+    		<!-- 二级分类与商品的关联 -->
+    		<set name="products">
+    			<key column="csid"></key>
+    			<one-to-many class="com.itch.shop.product.bean.Product"/>
+    		</set>
+    		
+    	</class>
+    
+    </hibernate-mapping>
+    
